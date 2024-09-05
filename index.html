@@ -3,102 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>互動聖經故事 - 出埃及記</title>
+    <title>互動出埃及記</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             padding: 20px;
-            max-width: 600px;
-            margin: auto;
+            text-align: center;
         }
         h1 {
             color: #4CAF50;
         }
-        .story-container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        .container {
+            margin-top: 50px;
         }
-        .story-text {
-            margin-bottom: 20px;
-        }
-        .choice-button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
+        .start-button {
+            padding: 15px 30px;
             background-color: #4CAF50;
-            color: #fff;
+            color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 10px;
+            font-size: 18px;
             cursor: pointer;
         }
-        .choice-button:hover {
+        .start-button:hover {
             background-color: #45a049;
         }
     </style>
 </head>
 <body>
-    <h1>互動聖經故事 - 出埃及記</h1>
-    <div class="story-container">
-        <p id="story" class="story-text">
-            你是摩西，帶領以色列人逃離埃及的奴役。法老不願意讓你們走，但上帝降下了十災。最終，法老同意了。你們現在正準備出發。
-        </p>
-        <button class="choice-button" onclick="makeChoice(1)">帶領人民出發</button>
-        <button class="choice-button" onclick="makeChoice(2)">詢問上帝下一步行動</button>
+    <h1>歡迎來到出埃及記互動故事</h1>
+    <div class="container">
+        <p>探索摩西帶領以色列人民走出埃及的驚險旅程！做出你的選擇，看看故事會如何發展。</p>
+        <button class="start-button" onclick="startStory()">開始故事</button>
     </div>
 
     <script>
-        function makeChoice(choice) {
-            const storyText = document.getElementById('story');
-            const buttons = document.querySelectorAll('.choice-button');
-            
-            // 隱藏所有按鈕
-            function hideButtons() {
-                buttons.forEach(button => button.style.display = 'none');
-            }
-
-            switch (choice) {
-                case 1:
-                    storyText.textContent = "你帶領人民出發，向紅海進發。突然，你發現法老的軍隊正在追趕你們。你決定…";
-                    buttons[0].textContent = "祈求上帝的幫助";
-                    buttons[1].textContent = "鼓勵人民加快腳步";
-                    buttons[0].onclick = () => makeChoice(3);
-                    buttons[1].onclick = () => makeChoice(4);
-                    break;
-                case 2:
-                    storyText.textContent = "上帝告訴你，不要害怕，只管前進。你決定…";
-                    buttons[0].textContent = "帶領人民繼續前進";
-                    buttons[1].textContent = "選擇其他路徑";
-                    buttons[0].onclick = () => makeChoice(1);
-                    buttons[1].onclick = () => makeChoice(5);
-                    break;
-                case 3:
-                    storyText.textContent = "你祈求上帝的幫助，紅海的水突然分開，露出一條乾地。你們安全地穿過了紅海！";
-                    hideButtons();
-                    break;
-                case 4:
-                    storyText.textContent = "你鼓勵人民加快腳步，但法老的軍隊越來越近。你決定…";
-                    buttons[0].textContent = "再一次祈求上帝的幫助";
-                    buttons[1].textContent = "設置防禦";
-                    buttons[0].onclick = () => makeChoice(3);
-                    buttons[1].onclick = () => makeChoice(6);
-                    break;
-                case 5:
-                    storyText.textContent = "你選擇了其他路徑，但卻陷入了沙漠的困境。法老的軍隊追上來了。";
-                    hideButtons();
-                    break;
-                case 6:
-                    storyText.textContent = "你試圖設置防禦，但沒有成功。法老的軍隊抓住了你們。";
-                    hideButtons();
-                    break;
-                default:
-                    storyText.textContent = "故事結束。";
-                    hideButtons();
-                    break;
-            }
+        function startStory() {
+            window.location.href = "story.html";
         }
     </script>
 </body>
