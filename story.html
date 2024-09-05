@@ -9,38 +9,129 @@
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             padding: 20px;
-            text-align: center;
         }
         h1 {
             color: #4CAF50;
         }
-        .container {
-            margin-top: 50px;
-        }
-        .start-button {
-            padding: 15px 30px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
+        .story-container {
+            background-color: #fff;
+            padding: 20px;
             border-radius: 10px;
-            font-size: 18px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+            text-align: center;
+        }
+        .story-text {
+            margin-bottom: 20px;
+        }
+        .choice-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
         }
-        .start-button:hover {
+        .choice-button:hover {
             background-color: #45a049;
+        }
+        .story-image {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
-    <h1>歡迎來到出埃及記互動故事</h1>
-    <div class="container">
-        <p>探索摩西帶領以色列人民走出埃及的驚險旅程！做出你的選擇，看看故事會如何發展。</p>
-        <button class="start-button" onclick="startStory()">開始故事</button>
+    <h1>出埃及記 - 互動故事</h1>
+    <div class="story-container">
+        <img id="storyImage" class="story-image" src="" alt="故事圖片">
+        <p id="story" class="story-text">
+            你是摩西，神指派你去帶領以色列人脫離埃及的奴役。你站在法老面前，要求他讓以色列人民離開。
+        </p>
+        <button class="choice-button" onclick="makeChoice(1)">要求法老放走人民</button>
+        <button class="choice-button" onclick="makeChoice(2)">向法老顯示神蹟</button>
     </div>
 
     <script>
-        function startStory() {
-            window.location.href = "story.html";
+        function makeChoice(choice) {
+            const storyText = document.getElementById('story');
+            const storyImage = document.getElementById('storyImage');
+            const buttons = document.querySelectorAll('.choice-button');
+
+            // 隱藏所有按鈕
+            function hideButtons() {
+                buttons.forEach(button => button.style.display = 'none');
+            }
+
+            // 控制每一層選擇的邏輯
+            switch (choice) {
+                case 1:
+                    storyText.textContent = "法老拒絕了你的請求，並加倍折磨以色列人。";
+                    storyImage.src = "images/pharaoh.jpg";
+                    buttons[0].textContent = "祈求神的幫助";
+                    buttons[1].textContent = "再次要求法老";
+                    buttons[0].onclick = () => makeChoice(3);
+                    buttons[1].onclick = () => makeChoice(4);
+                    break;
+                case 2:
+                    storyText.textContent = "你將杖變成蛇，法老驚訝但仍然拒絕。";
+                    storyImage.src = "images/miracle.jpg";
+                    buttons[0].textContent = "展示更多神蹟";
+                    buttons[1].textContent = "呼求災難降臨";
+                    buttons[0].onclick = () => makeChoice(5);
+                    buttons[1].onclick = () => makeChoice(6);
+                    break;
+                case 3:
+                    storyText.textContent = "神降下了第一個災難，尼羅河變成了血。";
+                    storyImage.src = "images/nile_blood.jpg";
+                    buttons[0].textContent = "法老會屈服嗎？";
+                    buttons[1].style.display = 'none';
+                    buttons[0].onclick = () => makeChoice(7);
+                    break;
+                case 4:
+                    storyText.textContent = "法老再次拒絕，你決定必須展示神的力量。";
+                    storyImage.src = "images/plague.jpg";
+                    buttons[0].textContent = "呼求災難";
+                    buttons[1].style.display = 'none';
+                    buttons[0].onclick = () => makeChoice(6);
+                    break;
+                case 5:
+                    storyText.textContent = "法老看過更多神蹟後，依舊堅持不讓人民走。";
+                    storyImage.src = "images/pharaoh_resists.jpg";
+                    buttons[0].textContent = "發動更強大的神蹟";
+                    buttons[1].textContent = "呼求災難";
+                    buttons[0].onclick = () => makeChoice(6);
+                    buttons[1].onclick = () => makeChoice(6);
+                    break;
+                case 6:
+                    storyText.textContent = "神降下十災，每一災越來越嚴重，直到法老終於屈服。你成功帶領人民走出埃及！";
+                    storyImage.src = "images/exodus.jpg";
+                    buttons[0].textContent = "結局 - 出埃及成功";
+                    buttons[1].style.display = 'none';
+                    buttons[0].onclick = () => makeChoice(30); // 最終結局
+                    break;
+                case 7:
+                    storyText.textContent = "法老心仍然剛硬，不願讓人民走。你決定...";
+                    buttons[0].textContent = "繼續呼求神蹟";
+                    buttons[1].textContent = "與法老談判";
+                    buttons[0].onclick = () => makeChoice(6);
+                    buttons[1].onclick = () => makeChoice(4);
+                    break;
+                case 30: // 結局
+                    storyText.textContent = "經過艱辛的努力，摩西成功帶領以色列人走出埃及，邁向自由！";
+                    storyImage.src = "images/promised_land.jpg";
+                    hideButtons();
+                    break;
+                default:
+                    storyText.textContent = "故事結束。";
+                    hideButtons();
+                    break;
+            }
         }
     </script>
 </body>
