@@ -1,47 +1,22 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>互動出埃及記</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            padding: 20px;
-            text-align: center;
-        }
-        h1 {
-            color: #4CAF50;
-        }
-        .container {
-            margin-top: 50px;
-        }
-        .start-button {
-            padding: 15px 30px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 18px;
-            cursor: pointer;
-        }
-        .start-button:hover {
-            background-color: #45a049;
-        }
-    </style>
+    <title>牧童發現死海古卷</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>歡迎來到出埃及記互動故事</h1>
-    <div class="container">
-        <p>探索摩西帶領以色列人民走出埃及的驚險旅程！做出你的選擇，看看故事會如何發展。</p>
-        <button class="start-button" onclick="startStory()">開始故事</button>
+
+    <div id="story-container">
+        <h1>牧童的發現</h1>
+        <p id="story-text">1947年，在巴勒斯坦的庫姆蘭，一位牧童穆罕默德正在尋找走失的山羊。他發現了一個神秘的洞穴。你想進去看看嗎？</p>
+        <div id="choices">
+            <button onclick="chooseOption('enter')">進入洞穴</button>
+            <button onclick="chooseOption('ignore')">忽略洞穴，繼續找羊</button>
+        </div>
     </div>
 
-    <script>
-        function startStory() {
-            window.location.href = "story.html";
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

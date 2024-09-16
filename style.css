@@ -1,0 +1,91 @@
+/* 設置整體背景和文字樣式 */
+body {
+    font-family: 'Noto Sans TC', sans-serif;  /* 使用繁體中文友好的字體 */
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* 故事容器的樣式 */
+#story-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 600px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* 加入陰影效果 */
+    text-align: center;
+    animation: fadeIn 1s ease-out; /* 進場動畫 */
+}
+
+/* 標題樣式 */
+h1 {
+    color: #4A403A;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* 文字段落樣式 */
+#story-text {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* 選項按鈕的樣式 */
+button {
+    background-color: #8B4513; /* 棕色系按鈕，符合歷史氛圍 */
+    color: white;
+    padding: 12px 24px;
+    margin: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* 當鼠標懸停時的效果 */
+button:hover {
+    background-color: #A0522D;
+    transform: translateY(-3px); /* 微微上升的效果 */
+}
+
+/* 按鈕點擊時的效果 */
+button:active {
+    background-color: #5D3A1E;
+    transform: translateY(1px); /* 輕微下壓的效果 */
+}
+
+/* 添加一些淡入的動畫效果 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* 手機與小螢幕的相容性 */
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+    
+    #story-container {
+        padding: 20px;
+    }
+
+    button {
+        width: 100%; /* 手機上按鈕寬度全屏 */
+        margin: 10px 0;
+    }
+}
